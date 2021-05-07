@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ import com.udacity.util.Constants.CHANNEL_NAME
 import com.udacity.util.Constants.GLIDE_URL
 import com.udacity.util.Constants.LOADAPP_URL
 import com.udacity.util.Constants.RETROFIT_URL
+import com.udacity.util.Constants.TOAST_POSITION_Y_DP
 import com.udacity.util.DownloadStatus
 import com.udacity.util.sendNotification
 
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 val cursor = downloadManager.query(DownloadManager.Query().setFilterById(id))
                 if (cursor.moveToFirst()) {
                     if (cursor.count > 0) {
+                        val title = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE))
                         val downloadStatus =
                             cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
                         val status = if (downloadStatus == DownloadManager.STATUS_SUCCESSFUL) {
@@ -69,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         notificationManager.sendNotification(
                             applicationContext,
-                            fileName,
+                            title,
                             status.status
                         )
                     }
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
             loadingButton.setLoadingState(ButtonState.Loading)
             val request =
                 DownloadManager.Request(Uri.parse(selectedRepo))
-                    .setTitle(getString(R.string.app_name))
+                    .setTitle(fileName)
                     .setDescription(getString(R.string.app_description))
                     .setRequiresCharging(false)
                     .setAllowedOverMetered(true)
