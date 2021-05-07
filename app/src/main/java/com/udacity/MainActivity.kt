@@ -62,7 +62,8 @@ class MainActivity : AppCompatActivity() {
                 val cursor = downloadManager.query(DownloadManager.Query().setFilterById(id))
                 if (cursor.moveToFirst()) {
                     if (cursor.count > 0) {
-                        val title = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE))
+                        val title =
+                            cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_TITLE))
                         val downloadStatus =
                             cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
                         val status = if (downloadStatus == DownloadManager.STATUS_SUCCESSFUL) {
@@ -120,6 +121,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun showToast(text: String) {
         val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        toast.setGravity(
+            Gravity.BOTTOM,
+            0,
+            (TOAST_POSITION_Y_DP * resources.displayMetrics.density).toInt()
+        )
         toast.show()
     }
 
