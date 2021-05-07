@@ -11,5 +11,9 @@ object Constants {
         "https://github.com/bumptech/glide"
     const val RETROFIT_URL =
         "https://github.com/square/retrofit"
-    const val CHANNEL_ID = "channelId"
+    const val CHANNEL_ID = "channel_id"
+    const val CHANNEL_NAME = "channel_name"
+    const val NOTIFICATION_ID = 0
+    const val EXTRA_FILE_NAME = "file_name"
+    const val EXTRA_DOWNLOAD_STATUS = "download_status"
 }
