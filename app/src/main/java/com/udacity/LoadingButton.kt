@@ -6,7 +6,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.udacity.util.Constants.ANIMATION_DURATION
-import com.udacity.util.Constants.BUTTON_TEXT_SIZE_DP
+import com.udacity.util.Constants.BUTTON_TEXT_SIZE_SP
 import com.udacity.util.Constants.CIRCLE_DIAMETER_PERCENTAGE
 import com.udacity.util.Constants.CIRCLE_MARGIN_PERCENTAGE
 import kotlin.properties.Delegates
@@ -32,7 +32,7 @@ class LoadingButton @JvmOverloads constructor(
     private val circleAnimPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
-        textSize = BUTTON_TEXT_SIZE_DP * resources.displayMetrics.scaledDensity
+        textSize = BUTTON_TEXT_SIZE_SP * resources.displayMetrics.scaledDensity
     }
 
     private var buttonState: ButtonState by Delegates.observable(ButtonState.Completed) { _, _, new ->

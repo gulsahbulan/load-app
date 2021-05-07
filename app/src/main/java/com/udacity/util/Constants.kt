@@ -2,7 +2,8 @@ package com.udacity.util
 
 object Constants {
     const val ANIMATION_DURATION = 2000L
-    const val BUTTON_TEXT_SIZE_DP = 24F
+    const val BUTTON_TEXT_SIZE_SP = 24F
+    const val TOAST_POSITION_Y_DP = 24
     const val CIRCLE_DIAMETER_PERCENTAGE = 0.6F
     const val CIRCLE_MARGIN_PERCENTAGE = 0.2F
     const val LOADAPP_URL =
